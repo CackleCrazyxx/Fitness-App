@@ -1,0 +1,35 @@
+def login_user():
+	global LoggedIn_ID ## variable needed to know who logged in ##
+	if user_textbox.value == "": #checks if the username field has an input
+		info("Error", "You must enter a valid username") #error message
+	elif pwd_textbox.value == "": #checks if the password field has an input
+		info("Error", "You must enter a password")#error message
+	elif "'" in pwd_textbox.value  or "'" in user_textbox.value:
+		info("Error", "No SQL Injection please!")
+	else:
+		username = user_textbox.value
+		sqlselect = "SELECT * FROM Customer_Table WHERE CustomerUserName = '"+username+"'"
+		rows = query_database(database_file, sqlselect)
+		if len(rows) == 0: ### This checks that the user was found ###
+			info("Account Error","Account not Found")#error message
+		else:
+			DBP = rows[0][4]
+			if DBP == pwd_textbox.value: #this checks to find if any passwords in the database matches the value that the user has input in the password box
+				info("Log in","You have successfully logged in")#error message
+				
+				LoggedIn_ID = rows [0][0] #this takes the userID
+				Login_name.value = username
+
+				sqlselect = "SELECT * FROM Card_Table WHERE CustomerID = '"+str(LoggedIn_ID)+"'"
+				rows = query_database(database_file, sqlselect)
+				if len(rows) == 0: ### This checks that the user was found ###
+					premium_membership.enable()
+					customised_plans.disable()
+					info ("Join Premium Now!", "There is much more content that you could unlock if you join toka fitness premium!")
+				else:
+					premium_membership.disable()
+					customised_plans.enable()
+				main_menu_window() #this opens the main menu window
+
+			else: 
+				info("Account Error", "Incorrect Password") #error message
