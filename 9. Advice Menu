@@ -1,0 +1,9 @@
+#################################
+# build Newfeed menu            #
+#################################
+Newsfeed = Window(app, title = "Newsfeed", height = 600, bg = "antiquewhite1")
+Newsfeed.hide()
+Newsfeed_message = Text(Newsfeed, text = "Here's some advice!")
+newsfeed_fitness = PushButton(Newsfeed, text = "Fitness Training", width = 15, command = fitness_advice_window)
+newsfeed_eating = PushButton(Newsfeed, text = "Healthy Eating", width = 15, command = eating_advice_window)
+newsfeed_back = PushButton( Newsfeed, text = "Back", width = 15, command = newsfeed_back_btn)
