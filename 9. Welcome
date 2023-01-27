@@ -1,0 +1,12 @@
+#################################
+# build welcome window          #
+#################################
+app = App(title='Welcome', bg = 'antiquewhite1', width = 600, height =800) #this creates the main window
+logo = Picture(app, image="Edited Logo.PNG", width = 200, height = 200)
+message = Text(app, text =" Welcome to ToKa Fitness!") #this gives the main widow a title
+text_blank = Text(app, text="")
+main_log_in = PushButton(app, text="Log In", command=login_window, width = 15) #this creates the login button
+text_blank = Text(app, text="")
+main_sign_up =  PushButton(app, text="Sign Up", command=sign_up_window, width = 15) #this creates the sign_up button
+text_blank = Text(app, text="")
+main_exit = PushButton(app, text="Exit", command=exit_window, width = 15) #this creates the exit button
