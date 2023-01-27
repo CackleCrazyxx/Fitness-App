@@ -1,0 +1,20 @@
+#################################
+# build premium window          #
+#################################
+premium_window = Window(app, title = "Join Premium",  height = 600, bg = "antiquewhite1", layout = 'grid')
+premium_window.hide()
+premium_message = Text(premium_window, text="Are you ready to become premium? ", grid = [1,0]) #this tells the user what the window is for
+premium_name = Text(premium_window, text= "Name On Card:", grid = [0,1]) #this tells the user what to enter
+premium_name_textbox = TextBox(premium_window, text="",width = 30, grid = [1,1]) #this gives the user space to enter the username
+premium_account_number = Text(premium_window, text= "Account Number:", grid =[0,2])#this tells the user what to enter
+premium_account_number_textbox = TextBox(premium_window, width = 30, grid =[1,2])#this gives the user space to enter the password
+premium_expiry_date = Text(premium_window, text = "Expiry Date:", grid =[0,3])
+premium_expiry_date_textbox = TextBox(premium_window, width = 30, grid =[1,3])
+premium_cvv =  Text(premium_window, text = "CVV:", grid =[0,4])
+premium_cvv_textbox = TextBox(premium_window, width = 30, grid =[1,4])
+premium_billing_address = Text(premium_window, text = "Billing Address:", grid =[0,5])
+premium_billing_address_textbox = TextBox(premium_window, width = 30, grid =[1,5])
+premium_postcode = Text(premium_window, text = "Postcode:", grid =[0,6])
+premium_postcode_textbox = TextBox(premium_window, width = 30, grid =[1,6])
+confirm_premium = PushButton(premium_window, text="Join!", command=join_premium,width = 15, grid = [1,7])
+premium_back = PushButton(premium_window, text="Back", command=premium_back_btn, width= 15, grid = [1,8])
