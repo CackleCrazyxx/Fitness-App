@@ -1,0 +1,44 @@
+def normalise_postcode(postcode,NON_ALPHA_RE,POSTCODE_RE):
+    """Return a normalised postcode if valid, or None if not."""
+
+    postcode = NON_ALPHA_RE.sub('', postcode.upper())
+    postcode = postcode[:-3] + ' ' + postcode[-3:]
+    if POSTCODE_RE.match(postcode):
+        return postcode
+    return None
+
+def join_premium():
+	global LoggedIn_ID
+	if premium_name_textbox.value.isnumeric() == True:
+		info("Error",'No Numbers in the name textbox!')
+	elif premium_account_number_textbox.value.isnumeric() == False:
+		info('Error','Please enter only numbers into the Textbox!')
+	elif len(premium_account_number_textbox.value) != 16:
+		info('Error','Please make sure it is 16 digits long')
+	elif premium_cvv_textbox.value.isnumeric() == False:
+		info('Error','Please make sure it is only numbers entered into the CVV textbox')
+	elif len(premium_cvv_textbox.value) != 3:
+		info("Error",'Please make sure the CVV is only 3 digits long')
+	elif premium_postcode_textbox.value != '':
+		NON_ALPHA_RE = re.compile('[^A-Z0-9]+')
+		POSTCODE_RE = re.compile('^[A-Z]{1,2}[0-9]{1,2}[A-Z]? [0-9][A-Z]{2}$')
+		ans = normalise_postcode(premium_postcode_textbox.value,NON_ALPHA_RE,POSTCODE_RE )
+		if ans == None:
+			info('Error','Please enter the Postcode correctly')
+		else:
+			InsertdataSQL = ("INSERT INTO Card_Table(Name_on_card, Card_Number, Expiry_Date, CVV_Number, Billing_Address, Postcode, CustomerID) values ('"+ str(premium_name_textbox.value) + "', '"+ str(premium_account_number_textbox.value) + "','" + str(premium_expiry_date_textbox.value) + "', '" + str(premium_cvv_textbox.value) + "', '"  + str(premium_billing_address_textbox.value) +"', '" + str(premium_postcode_textbox.value)+"', '"+ str(LoggedIn_ID)+"')")
+			execute_sql(database_file,InsertdataSQL)
+			info("Welcome to Premium", "Please go back to main menu and re-log back in to activate the premium")
+
+def my_upd(l1,cal,window): #this creates the calendar
+	global datechosen #sets global datechosen from the calendar
+	date=''
+	#datechosen = l1.config(text=cal.get_date())
+	dt=cal.selection_get()
+	date=cal.get_date()
+	l1 = date
+	#l1.config(date) # read and display date
+	#textdate.value = datechosen
+	date=dt.strftime("%d/%m/%Y") # format changed
+	dob_display.value = date
+	window.destroy() #hide your window when it is selected 
