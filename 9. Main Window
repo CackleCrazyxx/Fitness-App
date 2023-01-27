@@ -1,0 +1,20 @@
+#################################
+# build main menu window        #
+#################################
+main_menu_username = user_textbox.value
+main_menu = Window(app, title = "Main Menu",  height = 600, width = 1400, bg = "antiquewhite1")
+main_menu.hide()
+user_text = Text(main_menu, text = "Welcome to Toka Fitness!")
+
+option = Box(main_menu, align = "top", layout = 'grid')
+LoginText = Text(option, text = "You are logged in as:", grid = [0,0], align = "right")
+Login_name = Text(option, grid = [1,0], align = "left")
+premium_membership = PushButton(option, text = "Join Premium", width = 15, grid = [0,1], command = join_premium_window)
+user_calories_information = PushButton(option, text = "Your Calories", width = 15, grid = [1,1], command = user_calories_window)
+social_ranking = PushButton(option, text = "Social Ranking", width = 15, grid = [2,1], command = social_ranking_window)
+newsfeed_menu = PushButton (option, text = "Newsfeed Menu", width = 15, grid = [3,1], command = newsfeed_window)
+customised_plans = PushButton (option, text = "Customised Plans",width = 15, grid = [4,1], command = customise_plan_window)
+additional_services = PushButton (option, text = "Additional Services", width = 15, grid = [5,1], command = additional_services_window)
+log_out = PushButton (option, text = "Log Out", width = 15, grid = [6,1], command = Log_out_btn)
+premium_membership.text_color = "#CEB565"
+logo = Picture(main_menu, image="Edited Logo.PNG", width = 500, height = 500, grid = [1,0])
