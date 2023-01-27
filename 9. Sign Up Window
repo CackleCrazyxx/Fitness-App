@@ -1,0 +1,28 @@
+#################################
+# build sign up window          #
+#################################
+
+sign_up = Window(app,title = "Sign Up", bg = 'antiquewhite1', layout = 'grid', height = 600)#this creates the sign up window
+sign_up.hide()
+logo = Picture(sign_up, image="Edited Logo.PNG", width = 200, height = 200, grid = [1,0])
+sign_up_message = Text(sign_up, text=" Join Us Today!", grid = [1,1])#this tells the user what the window is for
+FName_signup = Text(sign_up, text= "First Name:", grid =[0,2])#this tells the user what to enter
+FName_textbox = TextBox(sign_up,width = 30, grid = [1,2])#this gives the user space to enter the name
+LName_signup = Text(sign_up, text= "Last Name:", grid =[0,3])#this tells the user what to enter
+LName_textbox = TextBox(sign_up,width = 30, grid = [1,3])#this gives the user space to enter the name
+Email_signup = Text(sign_up, text= "Email:", grid =[0,4])#this tells the user what to enter
+Email_textbox = TextBox(sign_up,width = 30, grid = [1,4])#this gives the user space to enter the email
+PhoneNo_signup = Text(sign_up, text= "Phone Number:", grid =[0,5])#this tells the user what to enter
+PhoneNo_textbox = TextBox(sign_up,width = 30, grid = [1,5])#this gives the user space to enter the phone number
+Age_signup = Text(sign_up, text='Age', grid = [0,6])
+#dob_button = PushButton(sign_up, text = 'Calendar',command = date_btn, grid = [2,5])
+Age_textbox = TextBox(sign_up, width = 30, text='', grid=[1,6])
+Username_signup = Text(sign_up, text= "Username:", grid =[0,7])#this tells the user what to enter
+Username_textbox = TextBox(sign_up,width = 30,  grid =[1,7])#this gives the user space to enter the username
+Pwd_signup = Text(sign_up, text= "Password:", grid =[0,8])#this tells the user what to enter
+Pwd_textbox = TextBox(sign_up, width = 30, grid =[1,8])#this gives the user space to enter the password 
+PwdCon_signup = Text(sign_up, text= "Confirm Password:", grid =[0,9])#this tells the user what to enter
+PwdCon_textbox = TextBox(sign_up, width = 30, grid =[1,9])#this gives the user space to enter the password
+Terms = CheckBox(sign_up, "Terms and Conditions (must be ticked)", command = TandC, grid = [1,10])
+btn_sign_up = PushButton(sign_up, text="Sign Up", command= sign_up_validation, grid = [1,11], width = 15, enabled = False)# this allows the user to try and sign up 
+btn_back = PushButton(sign_up, text="Back", command=back, grid = [1,12],  width = 15)  #this allows the user to go back to the main menu 
