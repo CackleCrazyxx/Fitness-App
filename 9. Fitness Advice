@@ -1,0 +1,74 @@
+#################################
+# build fitness advice          #
+#################################
+Fitness_advice = Window(app,title = "Fitness Adivce", height = 600, width = 800, bg = "antiquewhite1")
+Fitness_advice.hide()
+
+Fadvice1 = Picture(Fitness_advice, image ="FitnessAd1.PNG", width = 600, height = 300 )
+Fadvice2 = Picture(Fitness_advice, image ="FitnessAd2.PNG", visible = False, width = 600, height = 300 )
+Fadvice3 = Picture(Fitness_advice, image ="FitnessAd3.PNG", visible = False, width = 600, height = 300 )
+Fadvice4 = Picture(Fitness_advice, image ="FitnessAd4.PNG", visible = False, width = 600, height = 300 )
+Fadvice5 = Picture(Fitness_advice, image ="FitnessAd5.PNG", visible = False, width = 600, height = 300 )
+Fadvice6 = Picture(Fitness_advice, image ="FitnessAd6.PNG", visible = False, width = 600, height = 300 )
+Fadvice7 = Picture(Fitness_advice, image ="FitnessAd7.PNG", visible = False, width = 600, height = 300 )
+Fadvice8 = Picture(Fitness_advice, image ="FitnessAd8.PNG", visible = False, width = 600, height = 300 )
+
+fitness_btn_box = Box(Fitness_advice, layout = "grid")
+fitness_advice_next_btn = PushButton(fitness_btn_box, align="right", text="Next", command=fitness_advice_Next, width = 15, grid = [0,0])
+fitness_advice_back_btn = PushButton(fitness_btn_box, align="right", text="Back", command=fitness_advice_Back, width = 15, grid = [1,0])
+learn_more_fitness_advice = PushButton(fitness_btn_box, align="right", text="Learn More", command=learn_more_fitness, width = 15, grid = [2,0])
+
+ef fitness_advice_Next():
+	#this allow them to scroll to the next image
+	if Fadvice1.visible == True:
+		Fadvice2.show()
+		Fadvice1.hide()
+		fitness_advice_back_btn.enable()
+	elif Fadvice2.visible == True:
+		Fadvice3.show()
+		Fadvice2.hide()
+	elif Fadvice3.visible == True:
+		Fadvice4.show()
+		Fadvice3.hide()
+	elif Fadvice4.visible == True:
+		Fadvice5.show()
+		Fadvice4.hide()
+	elif Fadvice5.visible == True:
+		Fadvice6.show()
+		Fadvice5.hide()
+	elif Fadvice6.visible == True:
+		Fadvice7.show()
+		Fadvice6.hide()
+	elif Fadvice7.visible == True:
+		Fadvice8.show()
+		Fadvice7.hide()
+		fitness_advice_next_btn.disable()
+
+def fitness_advice_Back():
+	#this go back from the image they are on
+	if Fadvice2.visible == True:
+		Fadvice1.show()
+		Fadvice2.hide()
+		fitness_advice_back_btn.disable()
+	elif Fadvice3.visible == True:
+		Fadvice2.show()
+		Fadvice3.hide()
+	elif Fadvice4.visible == True:
+		Fadvice3.show()
+		Fadvice4.hide()
+	elif Fadvice5.visible == True:
+		Fadvice4.show()
+		Fadvice5.hide()
+	elif Fadvice6.visible == True:
+		Fadvice5.show()
+		Fadvice6.hide()
+	elif Fadvice7.visible == True:
+		Fadvice6.show()
+		Fadvice7.hide()
+	elif Fadvice8.visible == True:
+		Fadvice7.show()
+		Fadvice8.hide()
+		fitness_advice_next_btn.enable()
+
+def learn_more_fitness():
+	return webbrowser.open('https://www.muscleandfitness.com/workouts/workout-tips/25-expert-tips-improve-workout/' )
