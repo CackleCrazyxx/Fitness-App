@@ -1,0 +1,41 @@
+#################################
+# build customise workout plan  #
+#################################
+Workout_Plan = Window(app, title = "Customise your workout plan", height = 800,width = 1000, bg = "antiquewhite1")
+Workout_Plan.hide()
+
+WPlan1 = Picture(Workout_Plan, image ="WPlan1.PNG", width = 900, height = 600 )
+WPlan2 = Picture(Workout_Plan, image ="WPlan2.PNG", visible = False, width = 900, height = 600 )
+WPlan3 = Picture(Workout_Plan, image ="WPlan3.PNG", visible = False, width = 900, height = 600 )
+WPlan4 = Picture(Workout_Plan, image ="WPlan4.PNG", visible = False, width = 900, height = 600 )
+
+workout_plan_btn_box = Box(Workout_Plan, layout = "grid")
+workout_plan_next_btn = PushButton(workout_plan_btn_box, align="right", text="Next", command=workout_plan_Next, width = 15, grid = [0,0])
+workout_plan_back_btn = PushButton(workout_plan_btn_box, align="right", text="Back", command=workout_plan_Back, width = 15, grid = [1,0])
+#learn_more_workout_plan = PushButton(workout_plan_btn_box, align="right", text="Learn More", command=learn_more_workout_plan, width = 15, grid = [2,0])
+
+def workout_plan_Next():
+	if WPlan1.visible == True:
+		WPlan2.show()
+		WPlan1.hide()
+		workout_plan_back_btn.enable()
+	elif WPlan2.visible == True:
+		WPlan3.show()
+		WPlan2.hide()
+	elif WPlan3.visible == True:
+		WPlan4.show()
+		WPlan3.hide()
+		workout_plan_next_btn.disable()
+
+def workout_plan_Back():
+	if WPlan2.visible == True:
+		WPlan1.show()
+		WPlan2.hide()
+		workout_plan_back_btn.disable()
+	elif WPlan3.visible == True:
+		WPlan2.show()
+		WPlan3.hide()
+	elif WPlan4.visible == True:
+		WPlan3.show()
+		WPlan4.hide()
+		workout_plan_next_btn.enable()
