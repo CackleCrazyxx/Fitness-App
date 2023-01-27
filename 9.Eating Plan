@@ -1,0 +1,33 @@
+#################################
+# build customise eating plan   #
+#################################
+Eating_Plan = Window(app, title = "Customise your eating plan", height = 1000, width = 1000, bg = "antiquewhite1")
+Eating_Plan.hide()
+
+EPlan1 = Picture(Eating_Plan, image ="EPlan1.PNG", width = 800, height = 600 )
+EPlan2 = Picture(Eating_Plan, image ="EPlan2.PNG", visible = False, width = 800, height = 600 )
+
+eating_plan_btn_box = Box(Eating_Plan, layout = "grid")
+eating_plan_next_btn = PushButton(eating_plan_btn_box, align="right", text="Next", command=eating_plan_Next, width = 15, grid = [0,0])
+eating_plan_back_btn = PushButton(eating_plan_btn_box, align="right", text="Back", command=eating_plan_Back, width = 15, grid = [1,0])
+learn_more_eating_plan = PushButton(eating_plan_btn_box, align="right", text="Learn More", command=learn_more_eating_plan, width = 15, grid = [2,0])
+
+def eating_plan_Next():
+	if EPlan1.visible == True:
+		EPlan2.show()
+		EPlan1.hide()
+		eating_plan_back_btn.enable()
+		eating_plan_next_btn.disable()
+
+def eating_plan_Back():
+	if EPlan2.visible == True:
+		EPlan1.show()
+		EPlan2.hide()
+		eating_plan_back_btn.disable()
+		eating_plan_next_btn.enable()
+
+def learn_more_eating_plan():
+	if EPlan1.visible == True:
+		return webbrowser.open("https://www.mnpork.com/4-week-meal-plan-workout-challenge/")
+	elif EPlan2.visible == True:
+		return webbrowser.open("https://therealfooddietitians.com/wp-content/uploads/2020/12/4_WEEK_MEAL_PLAN.pdf")
