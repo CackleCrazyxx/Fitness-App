@@ -1,0 +1,9 @@
+#################################
+# build customised plans menu            #
+#################################
+Custom_plans = Window(app, title = "Customise Plans", height = 600, bg = "antiquewhite1")
+Custom_plans.hide()
+Custom_plans_message = Text(Custom_plans, text = "Customise your plans")
+Custom_plans_workout = PushButton(Custom_plans, text = "Workout Plans", width = 15, command = workout_plans_window)
+Custom_plans_eating = PushButton(Custom_plans, text = "Eating Plans", width = 15, command = eating_plans_window)
+Custom_plans_back = PushButton( Custom_plans, text = "Back", width = 15, command = custom_plans_back_btn)
