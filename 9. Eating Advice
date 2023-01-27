@@ -1,0 +1,53 @@
+#################################
+# build eating advice          #
+#################################
+Eating_advice = Window(app,title = "Eating Advice", height = 800, width = 800, bg = "antiquewhite1")
+Eating_advice.hide()
+
+Eadvice1 = Picture(Eating_advice, image ="EatingAd1.PNG", width = 600, height = 600 )
+Eadvice2 = Picture(Eating_advice, image ="EatingAd2.PNG", visible = False, width = 600, height = 600 )
+Eadvice3 = Picture(Eating_advice, image ="EatingAd3.PNG", visible = False, width = 600, height = 600 )
+Eadvice4 = Picture(Eating_advice, image ="EatingAd4.PNG", visible = False, width = 600, height = 600 )
+Eadvice5 = Picture(Eating_advice, image ="EatingAd5.PNG", visible = False, width = 600, height = 600 )
+
+
+eating_btn_box = Box(Eating_advice, layout = "grid")
+eating_advice_next_btn = PushButton(eating_btn_box, align="right", text="Next", command=eating_advice_Next, width = 15, grid = [0,0])
+eating_advice_back_btn = PushButton(eating_btn_box, align="right", text="Back", command=eating_advice_Back, width = 15, grid = [1,0])
+learn_more_eating_advice = PushButton(eating_btn_box, align="right", text="Learn More", command=learn_more_eating, width = 15, grid = [2,0])
+
+def eating_advice_Next():
+	if Eadvice1.visible == True:
+		Eadvice2.show()
+		Eadvice1.hide()
+		eating_advice_back_btn.enable()
+	elif Eadvice2.visible == True:
+		Eadvice3.show()
+		Eadvice2.hide()
+	elif Eadvice3.visible == True:
+		Eadvice4.show()
+		Eadvice3.hide()
+	elif Eadvice4.visible == True:
+		Eadvice5.show()
+		Eadvice4.hide()
+		eating_advice_next_btn.disable()
+
+def eating_advice_Back():
+	#this go back from the image they are on
+	if Eadvice2.visible == True:
+		Eadvice1.show()
+		Eadvice2.hide()
+		eating_advice_back_btn.disable()
+	elif Eadvice3.visible == True:
+		Eadvice2.show()
+		Eadvice3.hide()
+	elif Eadvice4.visible == True:
+		Eadvice3.show()
+		Eadvice4.hide()
+	elif Eadvice5.visible == True:
+		Eadvice4.show()
+		Eadvice5.hide()
+		eating_advice_next_btn.enable()
+
+def learn_more_eating():
+	return webbrowser.open("https://www.nhs.uk/live-well/eat-well/how-to-eat-a-balanced-diet/eight-tips-for-healthy-eating/")
