@@ -1,0 +1,19 @@
+def TandC():
+	#this check to see if the user has tick the T&C
+	if Terms.value == 1:
+		info("Terms and conditions", "1.This agreement commences once you have indicated your acceptance in the Declaration section of the web sign up process.\n 2.This agreement will become binding on you and us when we contact you to confirm your membership application has been accepted, at which point a contract will come into existence between you and us.\n 3.You will be entitled to all the rights and privileges set for the Type of Membership chosen.\n 4.You cannot transfer this agreement to anyone else")
+		btn_sign_up.enable()
+		# makes the accsept
+	else:
+		info("Error", "you must accept Terms and conditions")
+	
+#################################
+# build cookie window           #
+#################################
+Cookie = App(title = "Cookies")
+Cookie.hide()
+legal_cookies = Cookie.yesno("Select Your Cookie Preferences", "We use cookies and similar tools that are necessary to enable you to make purchases, to enhance your fitness app experiences, improve our provided services and also use these cookies to understand how customers use our services. Would you like to accept our cookie policies?")
+if legal_cookies == True:
+    Cookie.info("Cookies", "Thank you for accepting our cookie policies!")
+else:
+    Cookie.error("Cookies", "We understand your choice.")
