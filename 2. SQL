@@ -7,7 +7,7 @@ CREATE TABLE "Customer_Table" (
 "CustomerPwd" TEXT,
 "CustomerEmailAddress" TEXT, 
 "CustomerPhoneNo" TEXT,
-"CustomerAge" DATE,
+"CustomerAge" INTEGER,
 PRIMARY KEY("CustomerID" AUTOINCREMENT)
 );
 CREATE TABLE "Session_Table" ( 
@@ -31,7 +31,7 @@ CONSTRAINT "CustomerID_fk"  FOREIGN KEY("CustomerID") REFERENCES "Customer_Table
 CREATE TABLE "Workout_Table" (
 "WorkoutID"  INTEGER NOT NULL,
 "WorkoutDate" DATE,
-"WorkoutDuration"  TIME,
+"WorkoutDuration"  INTEGER,
 "WorkoutCalories"  INTEGER,
 "CustomerID" INTEGER,
 "SessionID" INTEGER,
