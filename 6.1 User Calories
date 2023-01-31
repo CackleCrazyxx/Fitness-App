@@ -1,0 +1,22 @@
+def update_pwd_function():
+	global LoggedIn_ID
+	if update_user_textbox.value == "":
+		info("Error", "Please enter a username")
+	elif update_email_textbox.value == "":
+		info("Error", "Please enter a email")
+	elif update_pwd_textbox.value == "":
+		info("Error", "Please enter a new password")
+	else:
+		username = update_user_textbox.value
+		email = update_email_textbox.value
+		password = update_pwd_textbox.value
+		sqlselect = "SELECT * FROM Customer_Table WHERE CustomerUserName = '"+username+"'"+ " AND CustomerEmailAddress = "+ "'" + email + "'"
+		rows = query_database(database_file, sqlselect)
+		if len(rows) == 0: ### This checks that the user was found ###
+			info("Account Error","Account not Found")#error message
+		else:
+			LoggedIn_ID = rows [0][0]
+			UpdateDataSQL = "UPDATE Customer_Table SET CustomerPwd = '"+ password +"' WHERE CustomerID = '"+str(LoggedIn_ID)+"'"
+			info("Sucsess", "your password has been changed")
+			execute_sql(database_file, UpdateDataSQL)
+			update_pwd.hide()
