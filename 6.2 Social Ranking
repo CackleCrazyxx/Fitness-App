@@ -1,0 +1,27 @@
+def social_ranking_window():
+	x_list = []
+	y_list = []
+
+	sqlselect = "SELECT CustomerID, CustomerUserName from Customer_Table"
+	rows = query_database(database_file, sqlselect)
+	if len(rows) == 0: ### This checks that the user was found ###
+		info("Account Error","No Details to plot")#error message
+	else:
+		for i in range(len(rows)):
+
+			Current_user = rows[i][0]
+			Current_name = rows[i][1]
+			sqlselect = "SELECT AVG(WorkoutCalories) AS AverageCalories from Workout_Table where CustomerID ='"+str(Current_user)+"'"
+			Cal_rows = query_database(database_file, sqlselect)
+			
+			x_list.append(Current_name)
+			if Cal_rows[0][0] == None:
+				y_list.append(0)
+			else:
+				y_list.append(Cal_rows[0][0])
+
+		plt.bar(x_list, y_list)
+		plt.xlabel('Name of User')
+		plt.ylabel('Average Calories burned')
+		plt.title('Social Ranking')
+		plt.show()
